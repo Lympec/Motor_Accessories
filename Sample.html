@@ -1,0 +1,2654 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+  <title>Motor_Accesories</title>
+  <style>
+body{
+margin:0;
+font-family:Arial;
+}
+
+.tabcontent{
+display:none;
+padding:20px;
+}
+  
+.bottom-nav{
+position:fixed;
+bottom:0;
+width:100%;
+display:flex;
+justify-content:space-around;
+background:white;
+border-top:1px solid #ccc;
+}
+
+.bottom-nav button{
+background:none;
+border:none;
+padding:10px;
+font-size:14px;
+color:gray;
+}
+
+.bottom-nav button.active{
+color:#ff0066;
+}
+  
+  .menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #fff;
+  position: relative;
+}
+
+.menu-btn{
+font-size:20px;
+background:green;
+border:none;
+color:white;
+cursor:pointer;
+padding:8px 12px;
+border-radius: 6px;
+}
+  
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Side menu */
+  
+.side-menu{
+position:fixed;
+top:0;
+left:-250px;
+width:250px;
+height:100%;
+background:green;
+padding-top:60px;
+transition:0.3s;
+z-index:1000;
+  overflow: hidden; /* ADD THIS */
+}
+  
+.side-menu a{
+display:block;
+color:white;
+padding:15px;
+text-decoration:none;
+font-size:20px;
+}
+  
+.side-menu a:hover{
+background:#444;
+}
+.side-menu.show{
+left:0;
+}
+  
+  .search-box{
+  position: relative;
+  width: 250px;
+  z-index:1;
+}
+
+.search-box input{
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+}
+
+.search-box i{
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: gray;
+}
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+  }
+ .purchase-btn {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  color: green;
+  background: white;
+  border: 1px solid green;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+  
+  #home {
+    display: block; /* visible by default */
+}
+#Products, #cart, #more {
+    display: none; /* hidden by default */
+}
+  
+ .container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 45%;
+  text-align: center;
+}
+  
+  
+  
+  .detail-view {
+  display: none;
+  padding: 16px;
+}
+
+.detail-view img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: green;
+  cursor: pointer;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.detail-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.detail-price {
+  font-size: 1.4rem;
+  color: green;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.detail-specs {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 16px;
+}
+
+.detail-specs li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.buy-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+  
+  .cart-btn {
+  padding: 8px;
+  background: white;
+  color: green;
+  border: 1px solid green;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.cart-btn.added {
+  background: green;
+  color: white;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item img {
+  width: 70px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-info h4 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+
+.cart-item-info p {
+  margin: 0;
+  color: green;
+  font-weight: bold;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.cart-badge {
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 1px 5px;
+  font-size: 10px;
+  position: relative;
+  top: -8px;
+  left: -6px;
+}
+  
+  
+  #search-results {
+  display: none;
+  margin-top: 10px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  background: white;
+}
+
+.search-result-item:hover {
+  background: #f9f9f9;
+}
+
+.search-result-item img {
+  width: 70px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.search-result-info h4 {
+  margin: 0 0 4px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.search-result-info p {
+  margin: 0;
+  color: green;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.no-results {
+  padding: 16px;
+  text-align: center;
+  color: gray;
+  font-size: 0.9rem;
+}
+  
+  .menu-email {
+  color: white;
+  padding: 15px;
+  font-size: 13px; /* Smaller font */
+  word-break: break-all; /* Force long text to wrap */
+  border-top: 1px solid rgba(255,255,255,0.3);
+  margin-top: 10px;
+}
+
+.menu-email span {
+  display: block;
+  font-size: 11px;
+  opacity: 0.8;
+  margin-bottom: 4px;
+}
+  
+.dropdown-toggle {
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.dropdown-list {
+  display: none;
+  background: rgba(0,0,0,0.2);
+}
+
+.dropdown-list a {
+  padding: 10px 15px 10px 30px; /* indent */
+  font-size: 15px;
+}
+
+.dropdown-list.open {
+  display: block;
+}
+  
+  #termsBox {
+  transition: 0.3s;
+}
+  
+  .faq-item {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.faq-question {
+  background: #f9f9f9;
+  padding: 14px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: #222;
+}
+
+.faq-question:hover {
+  background: #f0f0f0;
+}
+
+.faq-answer {
+  display: none;
+  padding: 12px 14px;
+  font-size: 0.9rem;
+  color: #555;
+  border-top: 1px solid #eee;
+  background: white;
+  line-height: 1.6;
+}
+
+.faq-answer.open {
+  display: block;
+}
+  
+  /* Full width cards */
+.full-width-card {
+  width: 100% !important;
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* Make sure container doesn't affect full-width cards outside it */
+.full-width-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+  </style>
+  
+</head>
+
+<body>
+   <header>
+  <div class="menu-container">
+    <button class="menu-btn" onclick="openMenu()">☰</button>
+    <h4 class="title">M-ACCESSORY</h4>
+    <button class="cart-btn" onclick="openTab('cart')">
+      🛒<span class="cart-badge" id="headerBadge">0</span>
+    </button>
+  
+
+
+<div id="sideMenu" class="side-menu">
+   <span class="close-btn" onclick="closeMenu()"><b>x</b></span>
+  <!-- Dropdown -->
+  <div class="dropdown">
+    <div class="dropdown-toggle" onclick="toggleDropdown()">
+  Filter Cars ▾
+</div>
+<div class="dropdown-list" id="dropdownList">
+  <a href="#" onclick="filterCars('all')">🚗 All Cars</a>
+  <a href="#" onclick="filterCars('luxury')">👑 Luxury</a>
+  <a href="#" onclick="filterCars('sport')">🏎️ Sports Cars</a>
+  <a href="#" onclick="filterCars('suv')">🚙 SUVs</a>
+  <a href="#" onclick="filterCars('sedan')">🚘 Sedans</a>
+  <a href="#" onclick="filterCars('truck')">🛻 Trucks</a>
+  <a href="#" onclick="filterCars('exotic')">💎 Exotic</a>
+</div>
+  </div>
+
+<a href="#" onclick="openTab('home')">Home</a>
+ <a href="#" onclick="openTab('help'); document.getElementById('sideMenu').style.left='-250px';">Help</a>
+  <a href="terms.html" id="termsLink"style="
+  display:inline-block;
+  padding:10px 15px;
+  background:green;
+  color:white;
+  text-decoration:none;
+  border-radius:5px;
+">Terms/privacy</a>
+  <a href="service.html">Services</a>
+  <div class="menu-email">
+ <span>E-Mail us @:</span>
+    Motor_AccessoriesLtd@gmail.com
+  </div>
+</div>
+  </div>  
+   </header>
+
+
+<!-- PAGE CONTENT -->
+<div id="home" class="tabcontent">
+  
+  <div class="search-box">
+  <i class="fa fa-search"></i>
+  <input type="text" id="searchInput" placeholder="search a product" 
+    onkeyup="searchCars()">
+</div>
+ 
+  <!-- Search Results Dropdown -->
+<div id="search-results"></div>
+  
+  <p><b id="filter-label">Top sales for you</b></p>
+    
+    <!-- Detail: Car 1 -->  
+      <div id="detail-car1" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776816/20260228_200513_zmzjpb.jpg" alt="Lamborghini">
+  <div class="detail-title">Lamborghini Urus</div>
+  <div class="detail-price">$118,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 4.0L Twin-Turbo V8</li>
+    <li>⚡ 0-60 mph: 3.6 seconds</li>
+    <li>🏎️ Top Speed: 190 mph</li>
+    <li>🎨 Color: Lime Green</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Lamborghini Urus', '$118,000', 'car1')">Purchase Now</button>
+</div>
+
+  <!-- Detail: Car 2 -->
+  <div id="detail-car2" class="detail-view">
+    <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776676/20260228_204426_d20luv.jpg">
+    <div class="detail-title">Mercedes S-Class</div>
+    <div class="detail-price">$118,000</div>
+    <ul class="detail-specs">
+      <li>🔧 Engine: 4.0L Biturbo V8</li>
+      <li>⚡ 0-60 mph: 4.4 seconds</li>
+      <li>🏎️ Top Speed: 155 mph</li>
+      <li>🎨 Color: Gunmetal Grey</li>
+      <li>📦 In Stock: Yes</li>
+    </ul>
+    <button class="buy-btn" onclick="buyCar('Mercedes S-Class', '$118,000', 'car2')">Purchase Now</button>
+  </div>
+    
+    <!-- DETAIL: Car 3 -->
+<div id="detail-car3" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1774905870/20260330_173528_mbuusb.jpg">
+  <div class="detail-title">Ferrari F8 Tributo</div>
+  <div class="detail-price">$290,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 3.9L Twin-Turbo V8</li>
+    <li>💪 Horsepower: 710 hp</li>
+    <li>🔩 Torque: 568 lb-ft</li>
+    <li>⚡ 0-60 mph: 2.9 seconds</li>
+    <li>🏎️ Top Speed: 211 mph</li>
+    <li>🎨 Exterior: Rosso Corsa (Racing Red)</li>
+    <li>🖤 Accents: Carbon Fiber Front Splitter</li>
+    <li>🛞 Wheels: 20" R1 Motorsport Black Forged</li>
+    <li>🔴 Brakes: Carbon Ceramic Red Calipers</li>
+    <li>🪑 Interior: Nero Black Leather & Alcantara</li>
+    <li>🎛️ Dashboard: 7" Ferrari Touch Driver Display</li>
+    <li>🏎️ Steering: F1-Style Manettino Dial Wheel</li>
+    <li>❄️ Seats: Carbon Racing Sport Seats</li>
+    <li>💺 Seating: 2 Passengers</li>
+    <li>⚙️ Transmission: 7-Speed F1 Dual-Clutch</li>
+    <li>🚗 Drive: RWD</li>
+    <li>💡 Lights: Full LED Matrix Headlights</li>
+    <li>🏗️ Body: Aero Active Underbody System</li>
+    <li>🔒 Safety: Ferrari Dynamic Enhancer (FDE+)</li>
+    <li>🎵 Sound: Premium JBL Hi-Fi Audio</li>
+    <li>🏁 Heritage: Tribute to F40 & 308 GTB</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Ferrari F8 Tributo', '$290,000', 'car3')">Purchase Now</button>
+</div>
+    
+    <!-- DETAIL: Car 4 -->
+<div id="detail-car4" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1775336150/file_000000002054720a803f1af2fce06e9e_utprcv.jpg">
+  <div class="detail-title">BMW M4 Competition Stealth Edition</div>
+  <div class="detail-price">$88,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 3.0L Twin-Turbo Inline-6 (S58)</li>
+    <li>💪 Horsepower: 503 hp</li>
+    <li>🔩 Torque: 479 lb-ft</li>
+    <li>⚡ 0-60 mph: 3.8 seconds</li>
+    <li>🏎️ Top Speed: 180 mph (M Driver's Pkg)</li>
+    <li>🎨 Exterior: Frozen Black Matte Wrap</li>
+    <li>🖤 Grille: Enlarged M Kidney Full Matte Black</li>
+    <li>💙 Lights: Ice Blue Angel Eye LED Halo DRL</li>
+    <li>🏗️ Aero: Carbon Fiber Front Splitter & Lip</li>
+    <li>🖤 Mirrors: Carbon Fiber M Sport Caps</li>
+    <li>🛞 Wheels: 19"/20" M Forged Matte Black</li>
+    <li>🔴 Brakes: M Carbon Ceramic Red Calipers</li>
+    <li>🪑 Interior: Full Black Merino Leather</li>
+    <li>🎛️ Dashboard: 12.3" BMW iDrive 8 Curved Screen</li>
+    <li>🏎️ Steering: M Carbon Flat-Bottom Wheel</li>
+    <li>❄️ Seats: Heated & Ventilated M Sport Seats</li>
+    <li>💺 Seating: 4 Passengers</li>
+    <li>🌙 Ambient: 40-Color M Ambient Lighting</li>
+    <li>⚙️ Transmission: 8-Speed M Steptronic Auto</li>
+    <li>🚗 Drive: xDrive AWD (RWD Mode Available)</li>
+    <li>🏗️ Roof: Carbon Fiber Roof Panel</li>
+    <li>🔒 Safety: M Drive Professional + AEB</li>
+    <li>🎵 Sound: Harman Kardon 464W Premium</li>
+    <li>🏆 Exhaust: M Performance Titanium Exhaust</li>
+    <li>🌑 Theme: Full Stealth Night Build</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('BMW M4 Competition Stealth Edition', '$88,000', 'car4')">Purchase Now</button>
+</div>
+    
+    <!-- DETAIL: Car 5 -->
+<div id="detail-car5" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1774905046/20260330_180222_i04lb4.jpg">
+  <div class="detail-title">BMW 740i M Sport "The 7"</div>
+  <div class="detail-price">$98,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 3.0L TwinPower Turbo Inline-6</li>
+    <li>💪 Horsepower: 375 hp</li>
+    <li>🔩 Torque: 398 lb-ft</li>
+    <li>⚡ 0-60 mph: 4.9 seconds</li>
+    <li>🏎️ Top Speed: 155 mph (limited)</li>
+    <li>🎨 Exterior: Oxid Grey Metallic</li>
+    <li>🖤 Grille: Iconic Glow Illuminated Kidney</li>
+    <li>🪑 Interior: Merino Full Leather Caramel/Black</li>
+    <li>🎛️ Dashboard: 14.9" Curved BMW iDrive 8.5</li>
+    <li>📺 Entertainment: 31" 8K Theatre Screen (Rear)</li>
+    <li>❄️ Seats: Heated, Cooled & Massaging All Round</li>
+    <li>💺 Seating: 5 Passengers (Executive Lounge)</li>
+    <li>🌙 Ambient: 3D Ambient Interior Lighting</li>
+    <li>⚙️ Transmission: 8-Speed Steptronic Sport</li>
+    <li>🚗 Drive: xDrive AWD</li>
+    <li>💡 Lights: Laser Adaptive LED Headlights</li>
+    <li>🛞 Wheels: 21" M Aerodynamic Alloys</li>
+    <li>🔒 Safety: BMW Driving Assistant Professional</li>
+    <li>🎵 Sound: Bowers & Wilkins Diamond 36-Speaker</li>
+    <li>🅿️ Parking: Automated Parking Assistant Plus</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('BMW 740i M Sport *The 7*', '$98,000', 'car5')">Purchase Now</button>
+</div>
+    
+    <!-- DETAIL: Car 6 -->
+<div id="detail-car6" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1774905038/20260330_175649_fgymqm.jpg">
+  <div class="detail-title">Mercedes-Maybach SL 680</div>
+  <div class="detail-price">$250,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 4.0L Twin-Turbo V8 Biturbo</li>
+    <li>💪 Horsepower: 577 hp</li>
+    <li>🔩 Torque: 627 lb-ft</li>
+    <li>⚡ 0-60 mph: 3.9 seconds</li>
+    <li>🏎️ Top Speed: 155 mph (limited)</li>
+    <li>🎨 Exterior: Patagonia Red & Obsidian Black</li>
+    <li>🌹 Badge: Maybach Monogram Series</li>
+    <li>🛞 Wheels: 21" Maybach Spider Spoke Alloys</li>
+    <li>🪑 Interior: Nappa White Leather Quilted</li>
+    <li>🎛️ Dashboard: Dual 11.9" MBUX Curved Display</li>
+    <li>📺 Entertainment: MBUX Hyperscreen Ready</li>
+    <li>❄️ Seats: Heated, Cooled & Massaging Front</li>
+    <li>💺 Seating: 2 Passengers (Roadster)</li>
+    <li>🌙 Ambient: 64-Color Maybach Ambient Lighting</li>
+    <li>🌬️ Roof: Retractable Soft-Top Convertible</li>
+    <li>🌡️ Neck: Airscarf Neck-Level Heating System</li>
+    <li>⚙️ Transmission: 9-Speed AMG Speedshift MCT</li>
+    <li>🚗 Drive: 4MATIC+ AWD</li>
+    <li>💡 Lights: Digital LED Adaptive Headlights</li>
+    <li>🏗️ Hood: Carbon Fiber Tonneau Cover</li>
+    <li>🔒 Safety: PRE-SAFE Impulse Side System</li>
+    <li>🎵 Sound: Burmester High-End 3D Surround</li>
+    <li>🏆 Edition: Monogram Series Limited Edition</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Mercedes-Maybach SL 680', '$250,000', 'car6')">Purchase Now</button>
+</div>
+    
+    <!-- DETAIL: Car 7 -->
+<div id="detail-car7" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_280,c_fill/v1775337223/Screenshot_20260404-221050_vdz8on.jpg">
+  <div class="detail-title">Mercedes-Benz E300 Exclusive 2024</div>
+  <div class="detail-price">$68,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 2.0L Turbocharged 4-Cylinder</li>
+    <li>💪 Horsepower: 255 hp</li>
+    <li>🔩 Torque: 295 lb-ft</li>
+    <li>⚡ 0-60 mph: 6.0 seconds</li>
+    <li>🏎️ Top Speed: 130 mph (limited)</li>
+    <li>⛽ Fuel Economy: 23 city / 31 hwy mpg</li>
+    <li>🎨 Exterior: Obsidian Black Metallic</li>
+    <li>✨ Grille: Chrome Pin-Stripe Luxury Grille</li>
+    <li>⭐ Hood: Mercedes Star Hood Ornament</li>
+    <li>💡 Lights: Multibeam LED Adaptive Headlights</li>
+    <li>🛞 Wheels: 18" 5-Twin Spoke Chrome Alloys</li>
+    <li>🪑 Interior: Nappa Black/Beige Leather</li>
+    <li>🎛️ Dashboard: 14.4" + 14.4" Dual MBUX Superscreen</li>
+    <li>📺 Rear: MBUX Rear Tablet Entertainment</li>
+    <li>❄️ Seats: Heated, Cooled & Massaging Front</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: 64-Color Ambient Interior Lighting</li>
+    <li>🌅 Roof: Panoramic Sliding Glass Sunroof</li>
+    <li>⚙️ Transmission: 9-Speed 9G-Tronic Automatic</li>
+    <li>🚗 Drive: RWD (4MATIC AWD Available)</li>
+    <li>🔒 Safety: Mercedes PRE-SAFE + Driving Assist</li>
+    <li>🎵 Sound: Burmester 3D Surround System</li>
+    <li>🅿️ Parking: 360° Surround View Camera</li>
+    <li>🏆 Plate: VIP Edition</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Mercedes-Benz E300 Exclusive 2024', '$68,000', 'car7')">Purchase Now</button>
+</div>
+    
+    <!-- DETAIL: Car 8 -->
+<div id="detail-car8" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1775384240/20260405_080629_2_wxg97f.jpg">
+  <div class="detail-title">Chevrolet Camaro SS 2SS</div>
+  <div class="detail-price">$48,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 6.2L Naturally Aspirated LT1 V8</li>
+    <li>💪 Horsepower: 455 hp</li>
+    <li>🔩 Torque: 455 lb-ft</li>
+    <li>⚡ 0-60 mph: 4.0 seconds</li>
+    <li>🏎️ Top Speed: 165 mph</li>
+    <li>⛽ Fuel Economy: 16 city / 25 hwy mpg</li>
+    <li>🎨 Exterior: Satin Steel Grey Metallic</li>
+    <li>🖤 Badge: SS Blackout Bowtie Emblem</li>
+    <li>🟡 Lights: Amber Sweep LED DRL Headlights</li>
+    <li>🏗️ Hood: Functional Ram Air Hood Scoop</li>
+    <li>🛞 Wheels: 20" Gloss Black SS Alloys</li>
+    <li>🔴 Brakes: Brembo 4-Piston Front Calipers</li>
+    <li>🪑 Interior: Jet Black Leather Sport Seats</li>
+    <li>🎛️ Dashboard: 8" Chevrolet Infotainment 3 Plus</li>
+    <li>🏎️ Steering: SS Flat-Bottom Sport Wheel</li>
+    <li>❄️ Seats: Heated & Ventilated Front Seats</li>
+    <li>💺 Seating: 4 Passengers</li>
+    <li>🌙 Ambient: Configurable Interior Lighting</li>
+    <li>⚙️ Transmission: 10-Speed Automatic</li>
+    <li>🚗 Drive: RWD (Pure Muscle)</li>
+    <li>💡 Lights: Full LED Projector Headlights</li>
+    <li>🔒 Safety: Forward Collision Alert + LKA</li>
+    <li>🎵 Sound: Bose Premium 9-Speaker Audio</li>
+    <li>🏆 Exhaust: SS Performance Dual Exhaust</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Chevrolet Camaro SS 2SS', '$48,000', 'car8')">Purchase Now</button>
+  <br><br>
+</div>
+    
+    
+    <!-- PRODUCT GRID -->
+    <div id="product-grid">
+    <div class="container">
+      
+      <!-- 2-column grid cards -->
+      <!-- Lamborghini Urus = SUV + Exotic -->
+      <div class="card" id="car1" data-type="suv exotic luxury">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776816/20260228_200513_zmzjpb.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car1')">
+  </div>
+
+     <!-- Mercedes S-Class = Luxury + Sedan -->
+  <div class="card" id="car2" data-type="luxury sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776676/20260228_204426_d20luv.jpg" 
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car2')">
+  </div>
+      <!-- END 2-column grid -->
+      
+      <!-- Full width cards (OUTSIDE the container) -->
+      <!-- Ferrari F8 Tributo = Sport + Exotic -->
+      <div class="card full-width-card" id="car3" data-type="sport exotic luxury">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1774905870/20260330_173528_mbuusb.jpg" id="car3"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car3')">
+      </div>
+      
+      <!-- BMW M4 Competition = SUV + Exotic -->
+      <div class="card full-width-card" id="car4" data-type="suv exotic">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1775336150/file_000000002054720a803f1af2fce06e9e_utprcv.jpg" id="car4"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car4')">
+      </div>
+  
+      <!-- BMW 740i M sport = SUV + Exotic -->
+        <div class="card full-width-card" id="car5"  data-type="sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1774905046/20260330_180222_i04lb4.jpg" id="car5"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car5')">
+        </div>
+      
+      <!-- Maybach Sl 680 = SUV + Exotic -->
+      <div class="card full-width-card"  data-type="sport exotic luxury">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1774905038/20260330_175649_fgymqm.jpg" id="car6"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car6')">
+      </div>
+
+      <!-- Lamborghini Urus = SUV + Exotic -->
+      <div class="card full-width-card" data-type="sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_280,c_fill/v1775337223/Screenshot_20260404-221050_vdz8on.jpg" id="car7"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car7')">
+      </div>
+    
+      <div class="card full-width-card" data-type="sport">
+      <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1775384240/20260405_080629_2_wxg97f.jpg" id="car8"
+        style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car8')">
+      </div>
+      
+  </div>
+  </div>
+  </div>
+  <!-- END PRODUCT GRID -->
+  
+    <section>
+<div id="Products" class="tabcontent">
+    <p><h3>Make a Purchase</h3></p>
+  
+  <!-- DETAIL: Car 9 -->
+<div id="detail-car9" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775386365/20260405_080748_2_slogyo.jpg">
+  <div class="detail-title">Xiaomi SU7 Ultra 2024</div>
+  <div class="detail-price">$73,000</div>
+  <ul class="detail-specs">
+    <li>⚡ Type: Full Electric (BEV)</li>
+    <li>🔋 Battery: 101kWh Solid-State Hybrid Pack</li>
+    <li>💪 Horsepower: 1,548 hp (Tri-Motor)</li>
+    <li>🔩 Torque: 1,770 Nm (Combined)</li>
+    <li>🚀 0-60 mph: 1.98 seconds</li>
+    <li>🏎️ Top Speed: 217 mph</li>
+    <li>🛣️ Range: 497 miles (CLTC)</li>
+    <li>⚡ Charging: 800V Ultra-Fast HyperCharge</li>
+    <li>🎨 Exterior: Emerald Jade Green Metallic</li>
+    <li>🖤 Accents: Full Gloss Black Trim Package</li>
+    <li>💡 Lights: Full LED Intelligent Matrix DRL</li>
+    <li>🛞 Wheels: 21" Xiaomi Aero Forged Alloys</li>
+    <li>🔴 Brakes: Carbon Ceramic Brembo 6-Piston</li>
+    <li>🪑 Interior: Cognac Tan Nappa Leather</li>
+    <li>🎛️ Dashboard: 16.1" Xiaomi HyperOS Touchscreen</li>
+    <li>📱 Integration: Full Xiaomi Ecosystem Connect</li>
+    <li>🏎️ Steering: Sport Flat-Bottom Heated Wheel</li>
+    <li>❄️ Seats: Heated, Cooled & Massaging Front</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: 256-Color Ambient Lighting</li>
+    <li>🌅 Roof: Full Panoramic Glass Roof</li>
+    <li>⚙️ Drive Modes: Sport / Track / Comfort / Range</li>
+    <li>🚗 Drive: AWD Tri-Motor System</li>
+    <li>🤖 AI: Xiaomi HyperOS Smart Driving L2+</li>
+    <li>🔒 Safety: 30+ ADAS Intelligent Safety Suite</li>
+    <li>🎵 Sound: Xiaomi Premium 23-Speaker Audio</li>
+    <li>📍 Dealer: Redi Auto Vetura</li>
+    <li>📦 In Stock: Limited Units</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Xiaomi SU7 Ultra 2024<', '$73,000', 'car9')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 10 -->
+<div id="detail-car10" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558691/20260323_224630_nsxwsx.jpg">
+  <div class="detail-title">Mercedes-Benz C300 AMG Line</div>
+  <div class="detail-price">$48,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 2.0L Turbocharged 4-Cylinder</li>
+    <li>💪 Horsepower: 255 hp</li>
+    <li>🔩 Torque: 295 lb-ft</li>
+    <li>⚡ 0-60 mph: 5.9 seconds</li>
+    <li>🏎️ Top Speed: 130 mph (limited)</li>
+    <li>🎨 Exterior: Obsidian Black Metallic</li>
+    <li>🏁 Grille: Panamericana GT Upgraded</li>
+    <li>🪑 Interior: Black Nappa Leather</li>
+    <li>🎛️ Dashboard: 11.9" Touchscreen MBUX</li>
+    <li>❄️ Seats: Heated & Ventilated Front</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>⚙️ Transmission: 9-Speed Automatic</li>
+    <li>🚗 Drive: RWD</li>
+    <li>💡 Lights: LED High Performance Headlights</li>
+    <li>🛞 Wheels: 18" AMG Multi-Spoke Alloys</li>
+    <li>🔒 Safety: Mercedes PRE-SAFE System</li>
+    <li>🎵 Sound: Burmester Surround System</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Mercedes-Benz C300 AMG Line', '$48,000', 'car10')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 11 -->
+<div id="detail-car11" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558768/20260323_224447_rzdb8h.jpg">
+  <div class="detail-title">Toyota Camry XSE 2024</div>
+  <div class="detail-price">$32,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 2.5L 4-Cylinder Hybrid</li>
+    <li>💪 Horsepower: 225 hp</li>
+    <li>🔩 Torque: 163 lb-ft</li>
+    <li>⚡ 0-60 mph: 6.3 seconds</li>
+    <li>🏎️ Top Speed: 124 mph</li>
+    <li>⛽ Fuel Economy: 51 mpg city / 53 hwy</li>
+    <li>🎨 Exterior: Midnight Black Metallic</li>
+    <li>🪑 Interior: Black SofTex Leather</li>
+    <li>🎛️ Dashboard: 12.3" Toyota Audio Multimedia</li>
+    <li>❄️ Seats: Heated & Ventilated Front</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>⚙️ Transmission: eCVT Automatic</li>
+    <li>🚗 Drive: AWD</li>
+    <li>💡 Lights: LED Bi-Beam Adaptive Headlights</li>
+    <li>🛞 Wheels: 18" Sport Black Alloys</li>
+    <li>🔒 Safety: Toyota Safety Sense 3.0</li>
+    <li>🎵 Sound: JBL Premium 9-Speaker Audio</li>
+    <li>Brand New: No</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Toyota Camry XSE 2024', '$32,000', 'car11')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 12 -->
+<div id="detail-car12" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558661/20260326_192238_rpr7ap.jpg">
+  <div class="detail-title">RAM 1500 TRX Launch Edition</div>
+  <div class="detail-price">$95,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 6.2L Supercharged HEMI V8</li>
+    <li>💪 Horsepower: 702 hp</li>
+    <li>🔩 Torque: 650 lb-ft</li>
+    <li>⚡ 0-60 mph: 4.5 seconds</li>
+    <li>🏎️ Top Speed: 118 mph (off-road limited)</li>
+    <li>🌊 Wading Depth: 32 inches</li>
+    <li>🎨 Exterior: Ignition Orange</li>
+    <li>🟫 Body Cladding: Matte Black Off-road</li>
+    <li>🪑 Interior: Black Laguna Leather</li>
+    <li>🎛️ Dashboard: 12" Uconnect 5 Touchscreen</li>
+    <li>❄️ Seats: Heated & Ventilated Front</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>⚙️ Transmission: 8-Speed TorqueFlite Auto</li>
+    <li>🚗 Drive: 4WD w/ Rear Locker</li>
+    <li>💡 Lights: Full LED Adaptive Headlights</li>
+    <li>🛞 Wheels: 18" Beadlock-Capable Alloys</li>
+    <li>📏 Ground Clearance: 11.8 inches</li>
+    <li>🔒 Safety: Forward Collision Warning + AEB</li>
+    <li>🎵 Sound: Harman Kardon 19-Speaker Audio</li>
+    <li>🏁 Badge: TRX Off-Road Graphics Package</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('RAM 1500 TRX Launch Edition', '$95,000', 'car12')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 13 -->
+<div id="detail-car13" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558646/20260326_192246_joycji.jpg">
+  <div class="detail-title">BMW M5 Competition F90</div>
+  <div class="detail-price">$95,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 4.4L Twin-Turbo V8 (S63)</li>
+    <li>💪 Horsepower: 617 hp</li>
+    <li>🔩 Torque: 553 lb-ft</li>
+    <li>⚡ 0-60 mph: 3.3 seconds</li>
+    <li>🏎️ Top Speed: 190 mph (M Driver's Pkg)</li>
+    <li>🎨 Exterior: Donington Grey Metallic</li>
+    <li>🖤 Grille: M Black Gloss Kidney</li>
+    <li>🏗️ Aero: Full Carbon Fiber Front Splitter</li>
+    <li>🖤 Mirrors: Carbon Fiber M Sport Caps</li>
+    <li>🛞 Wheels: 20" M Forged Gloss Black Alloys</li>
+    <li>🔴 Brakes: M Gold Compound 6-Piston Calipers</li>
+    <li>🪑 Interior: Black Merino Full Leather</li>
+    <li>🎛️ Dashboard: 12.3" iDrive 7 Live Cockpit Pro</li>
+    <li>🏎️ Steering: M Multifunction Carbon Wheel</li>
+    <li>❄️ Seats: Heated & Ventilated M Sport Seats</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: BMW Ambient Interior Lighting</li>
+    <li>🌅 Roof: Full Panoramic Glass Sunroof</li>
+    <li>⚙️ Transmission: 8-Speed M Steptronic Sport</li>
+    <li>🚗 Drive: M xDrive AWD (RWD Mode Available)</li>
+    <li>💡 Lights: Full LED Adaptive Headlights</li>
+    <li>🔒 Safety: Active Protection + Lane Keeping</li>
+    <li>🎵 Sound: Harman Kardon 1200W Audio</li>
+    <li>🏆 Exhaust: M Competition Sport Exhaust</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('BMW M5 Competition F90', '$95,000', 'car13')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 14 -->
+<div id="detail-car14" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558612/20260326_192357_fg22cm.jpg">
+  <div class="detail-title">Changan UNI-K 2.0T Elite</div>
+  <div class="detail-price">$28,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 2.0L Blue Whale Turbo 4-Cylinder</li>
+    <li>💪 Horsepower: 233 hp</li>
+    <li>🔩 Torque: 390 Nm</li>
+    <li>⚡ 0-60 mph: 7.9 seconds</li>
+    <li>🏎️ Top Speed: 143 mph</li>
+    <li>⛽ Fuel Economy: 8.5L/100km</li>
+    <li>🎨 Exterior: Crystal Pearl White</li>
+    <li>🔷 Grille: Honeycomb Hexagon Active Grille</li>
+    <li>💡 Lights: Blue Accent LED DRL Headlights</li>
+    <li>🪑 Interior: Nappa Brown/Black Leather</li>
+    <li>🎛️ Dashboard: Dual 12.3" Panoramic Display</li>
+    <li>📺 Entertainment: 8-Speaker Surround System</li>
+    <li>❄️ Seats: Heated & Ventilated Front Seats</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: 64-Color Ambient Interior Lighting</li>
+    <li>🌅 Roof: Panoramic Sunroof</li>
+    <li>⚙️ Transmission: 8-Speed Wet DCT Automatic</li>
+    <li>🚗 Drive: AWD (iDD Intelligent System)</li>
+    <li>🛞 Wheels: 20" Diamond Cut Alloys</li>
+    <li>🔒 Safety: AEB + Lane Keep + Blind Spot</li>
+    <li>🅿️ Parking: 360° Panoramic Camera System</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Changan UNI-K 2.0T Elite', '$28,000', 'car14')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 15 -->
+<div id="detail-car15" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558592/20260326_192512_tqfcmw.jpg">
+  <div class="detail-title">BMW M4 Competition</div>
+  <div class="detail-price">$85,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 3.0L Twin-Turbo Inline-6 (S58)</li>
+    <li>💪 Horsepower: 503 hp</li>
+    <li>🔩 Torque: 479 lb-ft</li>
+    <li>⚡ 0-60 mph: 3.8 seconds</li>
+    <li>🏎️ Top Speed: 180 mph (M Driver's Pkg)</li>
+    <li>🎨 Exterior: Sapphire Black Metallic</li>
+    <li>🕳️ Grille: Enlarged M Kidney Black Gloss</li>
+    <li>💛 Lights: Amber Halo LED DRL Headlights</li>
+    <li>🪑 Interior: Merino Full Black Leather</li>
+    <li>🎛️ Dashboard: 12.3" iDrive 8 Curved Display</li>
+    <li>❄️ Seats: M Heated & Ventilated Sport Seats</li>
+    <li>💺 Seating: 4 Passengers</li>
+    <li>⚙️ Transmission: 8-Speed M Steptronic</li>
+    <li>🚗 Drive: xDrive AWD (Competition)</li>
+    <li>🛞 Wheels: 19"/20" M Forged Black Alloys</li>
+    <li>🏗️ Roof: Carbon Fiber Roof Panel</li>
+    <li>🔴 Brakes: M Compound Red Calipers</li>
+    <li>🔒 Safety: M Drive Professional Suite</li>
+    <li>🎵 Sound: Harman Kardon 464W Audio</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('BMW M4 Competition', '$25,000', 'car15')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 16 -->
+<div id="detail-car16" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558581/20260326_192520_dn4b13.jpg">
+  <div class="detail-title">Chevrolet Camaro ZL1</div>
+  <div class="detail-price">$52,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 6.2L Supercharged LT4 V8</li>
+    <li>💪 Horsepower: 650 hp</li>
+    <li>🔩 Torque: 650 lb-ft</li>
+    <li>⚡ 0-60 mph: 3.5 seconds</li>
+    <li>🏎️ Top Speed: 198 mph</li>
+    <li>🎨 Exterior: Rally Yellow</li>
+    <li>🖤 Stripes: Black Hood & Bumblebee Flame Graphics</li>
+    <li>🪑 Interior: Black Leather Suede Sport Seats</li>
+    <li>🎛️ Dashboard: 8" Chevrolet Infotainment 3</li>
+    <li>❄️ Seats: Heated & Ventilated Front Seats</li>
+    <li>💺 Seating: 4 Passengers</li>
+    <li>⚙️ Transmission: 10-Speed Automatic</li>
+    <li>🚗 Drive: RWD</li>
+    <li>💡 Lights: Quad LED Projector Headlights</li>
+    <li>🛞 Wheels: 20" Gloss Black ZL1 Alloys</li>
+    <li>🔴 Brakes: Brembo 6-Piston Front Calipers</li>
+    <li>🏗️ Aero: Front Splitter & Rear Spoiler</li>
+    <li>🔒 Safety: Forward Collision Alert + LKA</li>
+    <li>🎵 Sound: Bose 9-Speaker Premium Audio</li>
+    <li>🏁 Special: Transformers Bumblebee Edition Style</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn"onclick="buyCar('Chevrolet Camaro ZL1', '$52,000', 'car16')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 17 -->
+<div id="detail-car17" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558554/20260326_192553_c0wndg.jpg">
+  <div class="detail-title">Lexus RX 350 F Sport Black Line</div>
+  <div class="detail-price">$62,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 2.4L Turbocharged 4-Cylinder</li>
+    <li>💪 Horsepower: 275 hp</li>
+    <li>🔩 Torque: 317 lb-ft</li>
+    <li>⚡ 0-60 mph: 6.6 seconds</li>
+    <li>🏎️ Top Speed: 124 mph</li>
+    <li>⛽ Fuel Economy: 22 city / 29 hwy mpg</li>
+    <li>🎨 Exterior: Midnight Black Metallic</li>
+    <li>🕸️ Grille: F Sport Mesh Spindle Black Gloss</li>
+    <li>🖤 Package: Black Line Special Edition</li>
+    <li>💡 Lights: BladeScan LED Adaptive Headlights</li>
+    <li>🛞 Wheels: 21" F Sport Matte Black Alloys</li>
+    <li>🪑 Interior: Black NuLuxe/Leather Sport Seats</li>
+    <li>🎛️ Dashboard: 14" Lexus Interface Touchscreen</li>
+    <li>❄️ Seats: Heated & Ventilated Front Seats</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: 64-Color Ambient Interior Lighting</li>
+    <li>🌅 Roof: Panoramic Glass Moonroof</li>
+    <li>⚙️ Transmission: 8-Speed Automatic</li>
+    <li>🚗 Drive: AWD (LEXUS AWD-i)</li>
+    <li>🔒 Safety: Lexus Safety System+ 3.0</li>
+    <li>🎵 Sound: Mark Levinson 21-Speaker Audio</li>
+    <li>🅿️ Parking: 360° Panoramic View Monitor</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Lexus RX 350 F Sport Black Line', '$62,000', 'car17')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 18 -->
+<div id="detail-car18" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558569/20260326_192542_dxlwyy.jpg">
+  <div class="detail-title">Mercedes-AMG G63</div>
+  <div class="detail-price">$180,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 4.0L Twin-Turbo AMG V8 Biturbo</li>
+    <li>💪 Horsepower: 577 hp</li>
+    <li>🔩 Torque: 627 lb-ft</li>
+    <li>⚡ 0-60 mph: 4.5 seconds</li>
+    <li>🏎️ Top Speed: 137 mph (limited)</li>
+    <li>🎨 Exterior: Obsidian Black Metallic</li>
+    <li>🖤 Package: Night Package Full Gloss Black</li>
+    <li>🛞 Wheels: 22" AMG Cross-Spoke Black Forged</li>
+    <li>🔲 Grille: AMG Vertical Slat Black Gloss</li>
+    <li>💡 Lights: Full LED Round DRL Headlights</li>
+    <li>🪑 Interior: Nappa Black Leather & Carbon</li>
+    <li>🎛️ Dashboard: Dual 12.3" MBUX Widescreen</li>
+    <li>❄️ Seats: Heated, Cooled & Massaging AMG</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: 64-Color AMG Ambient Lighting</li>
+    <li>⚙️ Transmission: 9-Speed AMG Speedshift TCT</li>
+    <li>🚗 Drive: 4MATIC Permanent AWD</li>
+    <li>🔐 Diff: 3 Locking Differentials (Front/Mid/Rear)</li>
+    <li>📐 Approach Angle: 30.9° Off-Road Capable</li>
+    <li>🔒 Safety: PRE-SAFE + Active Brake Assist</li>
+    <li>🎵 Sound: Burmester Surround 3D Audio</li>
+    <li>🏆 Exhaust: AMG Performance Exhaust System</li>
+    <li>📦 Condition: Dealer Stock (Maa Motor)</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Mercedes-AMG G63', '$180,000', 'car18')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 19 -->
+<div id="detail-car19" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558533/20260326_192602_axhfd6.jpg">
+  <div class="detail-title">Honda Accord Sport 2.0T</div>
+  <div class="detail-price">$24,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 2.0L Turbocharged 4-Cylinder</li>
+    <li>💪 Horsepower: 252 hp</li>
+    <li>⚡ 0-60 mph: 5.5 seconds</li>
+    <li>🏎️ Top Speed: 143 mph</li>
+    <li>🎨 Exterior: Sonic Grey Pearl</li>
+    <li>🪑 Interior: Black Sport Cloth/Leather</li>
+    <li>🎛️ Dashboard: 8" Touchscreen Display</li>
+    <li>❄️ Seats: Heated Front Seats</li>
+    <li>⚙️ Transmission: 10-Speed Automatic</li>
+    <li>🚗 Drive: FWD</li>
+    <li>💡 Lights: LED DRL w/ Amber Turn Signal</li>
+    <li>🛞 Wheels: 19" Sport Alloys</li>
+    <li>🔒 Safety: Honda Sensing Suite</li>
+    <li>Brand New: No</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Honda Accord Sport 2.0T', '$24,000', 'car19')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 20 -->
+<div id="detail-car20" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558508/20260326_192655_vaicol.jpg">
+  <div class="detail-title">BMW M4 Coupe F82</div>
+  <div class="detail-price">$58,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 3.0L Twin-Turbo Inline-6 (S55)</li>
+    <li>💪 Horsepower: 425 hp</li>
+    <li>🔩 Torque: 406 lb-ft</li>
+    <li>⚡ 0-60 mph: 4.1 seconds</li>
+    <li>🏎️ Top Speed: 155 mph (180 w/ M Package)</li>
+    <li>🎨 Exterior: Yas Marina Blue Metallic</li>
+    <li>🖤 Grille: M Black Kidney Gloss</li>
+    <li>🛞 Wheels: 19"/20" M Dark Graphite Alloys</li>
+    <li>🪑 Interior: Black Merino Leather & Alcantara</li>
+    <li>🎛️ Dashboard: 10.25" iDrive 6 NBT Display</li>
+    <li>🏎️ Steering: M Multifunction Flat-Bottom Wheel</li>
+    <li>❄️ Seats: Heated M Sport Carbon Bucket Seats</li>
+    <li>💺 Seating: 4 Passengers</li>
+    <li>🌙 Ambient: BMW Ambient Interior Lighting</li>
+    <li>⚙️ Transmission: 7-Speed M DCT Automatic</li>
+    <li>🚗 Drive: RWD (Pure M Experience)</li>
+    <li>💡 Lights: Full LED Adaptive Headlights</li>
+    <li>🏗️ Aero: M Aerodynamics Front Splitter</li>
+    <li>🔴 Brakes: M Compound 4-Piston Calipers</li>
+    <li>🔒 Safety: Active Protection + DTC System</li>
+    <li>🎵 Sound: Harman Kardon Premium Audio</li>
+    <li>🏙️ Spotted: New York City Streets</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('BMW M4 Coupe F82', '$58,000', 'car20')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 21 -->
+<div id="detail-car21" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558491/20260326_195253_l6qgve.jpg">
+  <div class="detail-title">Mercedes-AMG GT 55 Coupe</div>
+  <div class="detail-price">$145,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 4.0L Twin-Turbo AMG V8 Biturbo</li>
+    <li>💪 Horsepower: 469 hp</li>
+    <li>🔩 Torque: 516 lb-ft</li>
+    <li>⚡ 0-60 mph: 3.9 seconds</li>
+    <li>🏎️ Top Speed: 188 mph</li>
+    <li>🎨 Exterior: Opalith White Magno Matt</li>
+    <li>🔲 Grille: AMG Panamericana Chrome Slat</li>
+    <li>🟡 Brakes: AMG Gold Ceramic Calipers</li>
+    <li>🛞 Wheels: 21" AMG Cross-Spoke Forged Bi-Color</li>
+    <li>🪑 Interior: Nappa Beige/Black Leather</li>
+    <li>🎛️ Dashboard: 11.9" AMG MBUX Superscreen</li>
+    <li>🏎️ Steering: AMG Performance Flat-Bottom Wheel</li>
+    <li>❄️ Seats: AMG Heated Sport Bucket Seats</li>
+    <li>💺 Seating: 2+2 Passengers</li>
+    <li>🌙 Ambient: 64-Color AMG Ambient Lighting</li>
+    <li>⚙️ Transmission: 9-Speed AMG Speedshift MCT</li>
+    <li>🚗 Drive: AMG Performance 4MATIC+ AWD</li>
+    <li>💡 Lights: AMG Digital LED Headlights</li>
+    <li>🏗️ Aero: AMG Carbon Fibre Front Splitter</li>
+    <li>🔒 Safety: AMG Track Pace + PRE-SAFE</li>
+    <li>🎵 Sound: Burmester High-End Surround Audio</li>
+    <li>🏆 Exhaust: AMG Performance Sports Exhaust</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Mercedes-AMG GT 55 Coupe', '$145,000', 'car21')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 22 -->
+<div id="detail-car22" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558471/20260326_195321_qucrkw.jpg">
+  <div class="detail-title">Porsche Macan GTS</div>
+  <div class="detail-price">$95,000</div>
+  <ul class="detail-specs">
+  <li>🔧 Engine: 2.9L Twin-Turbo V6</li>
+  <li>💪 Horsepower: 434 hp</li>
+  <li>⚡ 0-60 mph: 4.1 seconds</li>
+  <li>🏎️ Top Speed: 168 mph</li>
+  <li>🎨 Exterior: Slate Grey Metallic</li>
+  <li>🪑 Interior: Black Leather w/ Red Stitching</li>
+  <li>🎛️ Dashboard: Sport Chrono Package</li>
+  <li>❄️ Seats: Ventilated & Heated</li>
+  <li>⚙️ Transmission: 7-Speed PDK</li>
+  <li>🚗 Drive: AWD</li>
+  <li>💡 DRL: Blue Ambient LED Headlights</li>
+  <li>🛞 Wheels: 21" Exclusive Design</li>
+    <li>Brand New: Yes</li>
+  <li>📦 In Stock: Yes</li>
+</ul>
+  <button class="buy-btn" onclick="buyCar('Porsche Macan GTS', '$95,000', 'car22')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 23 -->
+<div id="detail-car23" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558404/20260326_200050_ru1pl7.jpg">
+  <div class="detail-title">Mercedes-AMG G63 Selenite Edition</div>
+  <div class="detail-price">$185,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 4.0L Twin-Turbo AMG V8 Biturbo</li>
+    <li>💪 Horsepower: 577 hp</li>
+    <li>🔩 Torque: 627 lb-ft</li>
+    <li>⚡ 0-60 mph: 4.5 seconds</li>
+    <li>🏎️ Top Speed: 137 mph (limited)</li>
+    <li>🎨 Exterior: Selenite Grey Magno Matte</li>
+    <li>🔲 Grille: AMG Panamericana Black Chrome</li>
+    <li>🔴 Brakes: AMG Red 6-Piston Calipers</li>
+    <li>🛞 Wheels: 22" AMG Cross-Spoke Gloss Black</li>
+    <li>💡 Lights: Full LED Round DRL Headlights</li>
+    <li>🏗️ Front: AMG Carbon Fiber Front Splitter</li>
+    <li>🖤 Mirrors: AMG Carbon Black Mirror Caps</li>
+    <li>🪑 Interior: Nappa Black/Grey Leather Quilted</li>
+    <li>🎛️ Dashboard: Dual 12.3" MBUX Widescreen</li>
+    <li>🏎️ Steering: AMG Performance Steering Wheel</li>
+    <li>❄️ Seats: Heated, Cooled & Massaging AMG</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: 64-Color AMG Ambient Lighting</li>
+    <li>🌅 Roof: Electric Glass Sunroof Panel</li>
+    <li>⚙️ Transmission: 9-Speed AMG Speedshift TCT</li>
+    <li>🚗 Drive: 4MATIC Permanent AWD</li>
+    <li>🔐 Diff: 3 Locking Differentials</li>
+    <li>📐 Approach Angle: 30.9° Off-Road Capable</li>
+    <li>🔒 Safety: PRE-SAFE + Active Brake Assist</li>
+    <li>🎵 Sound: Burmester Surround 3D Audio</li>
+    <li>🏆 Exhaust: AMG Performance Exhaust System</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Mercedes-AMG G63 Selenite Edition', '$185,000', 'car23')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 24 -->
+<div id="detail-car24" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558418/20260326_195920_xmcc6j.jpg">
+  <div class="detail-title">Cadillac CT5-V Blackwing</div>
+  <div class="detail-price">$92,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 6.2L Supercharged LT4 V8</li>
+    <li>💪 Horsepower: 668 hp</li>
+    <li>🔩 Torque: 659 lb-ft</li>
+    <li>⚡ 0-60 mph: 3.6 seconds</li>
+    <li>🏎️ Top Speed: 200 mph</li>
+    <li>⛽ Fuel Economy: 14 city / 21 hwy mpg</li>
+    <li>🎨 Exterior: Stellar Black Metallic</li>
+    <li>🖤 Grille: Blackwing Mesh Black Gloss</li>
+    <li>💡 Lights: Full LED Adaptive Curved DRL</li>
+    <li>🛞 Wheels: 19" Blackwing Polished Alloys</li>
+    <li>🔴 Brakes: Brembo 6-Piston Front Calipers</li>
+    <li>🏗️ Aero: Carbon Fiber Front Splitter</li>
+    <li>🪑 Interior: Jet Black Leather & Suede Alcantara</li>
+    <li>🎛️ Dashboard: 33" LED Curved Pillar-to-Pillar</li>
+    <li>🏎️ Steering: Blackwing Flat-Bottom Sport Wheel</li>
+    <li>❄️ Seats: Heated & Ventilated Recaro Sport</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: Cadillac Spectrum Ambient Lighting</li>
+    <li>🌅 Roof: Power Panoramic Glass Sunroof</li>
+    <li>⚙️ Transmission: 6-Speed Manual / 10-Auto</li>
+    <li>🚗 Drive: RWD (Pure Performance)</li>
+    <li>🏁 Mode: Nürburgring Track Mode Available</li>
+    <li>🔒 Safety: Super Cruise Hands-Free Driver</li>
+    <li>🎵 Sound: AKG 14-Speaker Studio Audio</li>
+    <li>🏆 Exhaust: Blackwing Active Quad Exhaust</li>
+    <li>🏅 Title: Most Powerful Cadillac Ever Built</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn"onclick="buyCar('Cadillac CT5-V Blackwing', '$92,000', 'car24')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 25 -->
+<div id="detail-car25" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558429/20260326_195518_eh1kq1.jpg">
+  <div class="detail-title">BMW i8 Coupe</div>
+  <div class="detail-price">$147,500</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 1.5L TwinPower Turbo + Electric Motor</li>
+    <li>💪 Horsepower: 369 hp (Combined)</li>
+    <li>🔩 Torque: 420 lb-ft (Combined)</li>
+    <li>⚡ 0-60 mph: 4.2 seconds</li>
+    <li>🏎️ Top Speed: 155 mph (limited)</li>
+    <li>🔋 Electric Range: 18 miles (Pure EV)</li>
+    <li>⛽ Fuel Economy: 69 MPGe combined</li>
+    <li>🎨 Exterior: White & Pink Two-Tone Wrap</li>
+    <li>💙 Accents: BMW Blue i kidney grille</li>
+    <li>🚪 Doors: Butterfly Scissor Doors</li>
+    <li>🪑 Interior: Black/Blue Leather & Carbon Fiber</li>
+    <li>🎛️ Dashboard: 10.2" iDrive Touchscreen</li>
+    <li>❄️ Seats: Heated Sport Bucket Seats</li>
+    <li>💺 Seating: 2+2 Passengers</li>
+    <li>⚙️ Transmission: 6-Speed Automatic</li>
+    <li>🚗 Drive: AWD (eDrive + RWD)</li>
+    <li>💡 Lights: Full LED Laser Headlights</li>
+    <li>🛞 Wheels: 20" Turbine-Style Alloys</li>
+    <li>🏗️ Body: Carbon Fiber Reinforced Plastic</li>
+    <li>🔒 Safety: Active Driving Assistant</li>
+    <li>🎵 Sound: Harman Kardon Premium Audio</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('BMW i8 Coupe', '$147,000', 'car25')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 26 -->
+<div id="detail-car26" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558443/20260326_195404_qwztfq.jpg">
+  <div class="detail-title">Mercedes-Benz GLK 350</div>
+  <div class="detail-price">$12,500</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 3.5L Naturally Aspirated V6</li>
+    <li>💪 Horsepower: 268 hp</li>
+    <li>🔩 Torque: 258 lb-ft</li>
+    <li>⚡ 0-60 mph: 7.1 seconds</li>
+    <li>🏎️ Top Speed: 130 mph</li>
+    <li>⛽ Fuel Economy: 15 city / 20 hwy mpg</li>
+    <li>🎨 Exterior: Mars Red Metallic</li>
+    <li>🖤 Roof: Black Panoramic Sunroof Rails</li>
+    <li>🪑 Interior: Black MB-Tex Leather Seats</li>
+    <li>🎛️ Dashboard: COMAND 5.8" Navigation Display</li>
+    <li>❄️ Seats: Heated Front Seats</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌅 Roof: Full Panoramic Glass Sunroof</li>
+    <li>⚙️ Transmission: 7-Speed G-Tronic Automatic</li>
+    <li>🚗 Drive: 4MATIC AWD</li>
+    <li>💡 Lights: Bi-Xenon HID Headlights</li>
+    <li>🛞 Wheels: 18" 5-Twin Spoke Alloys</li>
+    <li>🔒 Safety: ABS + ESP + Airbags x7</li>
+    <li>🎵 Sound: Harman Kardon Logic7 Audio</li>
+    <li>📍 Location: Lagos, Nigeria (Tokunbo)</li>
+    <li>📦 Condition: Foreign Used (Clean)</li>
+    <li>Brand New: No</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Mercedes-Benz GLK 350', '$12,500', 'car26')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 27 -->
+<div id="detail-car27" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775164784/20260326_192406_2_zxtfhc.jpg">
+  <div class="detail-title">Rolls-Royce Ghost Black Badge</div>
+  <div class="detail-price">$380,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 6.75L Twin-Turbo V12 Biturbo</li>
+    <li>💪 Horsepower: 591 hp (Black Badge)</li>
+    <li>🔩 Torque: 664 lb-ft</li>
+    <li>⚡ 0-60 mph: 4.6 seconds</li>
+    <li>🏎️ Top Speed: 155 mph (limited)</li>
+    <li>🎨 Exterior: Matte Gunmetal Grey Bespoke</li>
+    <li>🖤 Badge: Black Badge Dark Chrome Edition</li>
+    <li>🛞 Wheels: 24" Forgiato Spinner Custom Forged</li>
+    <li>🚪 Doors: Coach/Suicide Rear Doors</li>
+    <li>🟠 Interior: Burnt Orange Full Leather Bespoke</li>
+    <li>🪑 Seats: Quilted Orange Nappa Leather</li>
+    <li>🎛️ Dashboard: Rolls-Royce Spirit Cockpit</li>
+    <li>📺 Screen: Dual Rear Theatre Screens</li>
+    <li>⭐ Headliner: Starlight 1,340 LED Fiber Optic</li>
+    <li>❄️ Seats: Heated, Cooled & Massaging All Round</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: Bespoke Orange Ambient Lighting</li>
+    <li>🌅 Roof: Panoramic Glass Sunroof</li>
+    <li>⚙️ Transmission: 8-Speed Satellite Aided Auto</li>
+    <li>🚗 Drive: AWD (All-Wheel Steering)</li>
+    <li>💡 Lights: Laser LED Matrix Headlights</li>
+    <li>🔇 Cabin: 130kg Noise Insulation (Whisper Quiet)</li>
+    <li>🔒 Safety: Night Vision + Spirit of Ecstasy Sensor</li>
+    <li>🎵 Sound: Bespoke Audio 18-Speaker System</li>
+    <li>🏆 Custom: Forgiato Full Custom Build</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Rolls-Royce Ghost Black Badge', '$380,000', 'car27')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 28 -->
+<div id="detail-car28" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558389/20260326_200156_vdqwvg.jpg">
+  <div class="detail-title">BMW X6 M Competition</div>
+  <div class="detail-price">$130,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 4.4L Twin-Turbo V8</li>
+    <li>💪 Horsepower: 617 hp</li>
+    <li>⚡ 0-60 mph: 3.7 seconds</li>
+    <li>🏎️ Top Speed: 177 mph</li>
+    <li>🎨 Color: Fire Orange</li>
+    <li>⚙️ Transmission: 8-Speed M Steptronic</li>
+    <li>🚗 Drive: xDrive AWD</li>
+    <li>Brand New: Yes</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('BMW X6 M Competition', '$130,000', 'car28')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 29 -->
+<div id="detail-car29" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775333666/20260404_200215_bdsm4z.jpg">
+  <div class="detail-title">Lexus IS 500 F Sport Performance</div>
+  <div class="detail-price">$58,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 5.0L Naturally Aspirated V8</li>
+    <li>💪 Horsepower: 472 hp</li>
+    <li>🔩 Torque: 395 lb-ft</li>
+    <li>⚡ 0-60 mph: 4.4 seconds</li>
+    <li>🏎️ Top Speed: 168 mph</li>
+    <li>⛽ Fuel Economy: 19 city / 26 hwy mpg</li>
+    <li>🎨 Exterior: Sonic Chrome Metallic</li>
+    <li>🕸️ Grille: F Sport Black Mesh Spindle</li>
+    <li>🖤 Package: F Sport Performance Launch Ed.</li>
+    <li>💡 Lights: BladeScan LED Adaptive Headlights</li>
+    <li>🛞 Wheels: 19" F Sport Gloss Black Alloys</li>
+    <li>🪑 Interior: Black Semi-Aniline Leather</li>
+    <li>🎛️ Dashboard: 10.3" Lexus Interface Display</li>
+    <li>🏎️ Steering: F Sport Heated Steering Wheel</li>
+    <li>❄️ Seats: Heated & Ventilated F Sport Seats</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: F Sport Interior Illumination</li>
+    <li>⚙️ Transmission: 8-Speed Sport Direct Shift</li>
+    <li>🚗 Drive: RWD (Pure Sports Sedan)</li>
+    <li>🔴 Brakes: Brembo 4-Piston Front Calipers</li>
+    <li>🏗️ Aero: Carbon Fiber Front Spoiler Lip</li>
+    <li>🔒 Safety: Lexus Safety System+ 2.5</li>
+    <li>🎵 Sound: Mark Levinson 17-Speaker Audio</li>
+    <li>🏆 Special: Last V8 Lexus Sports Sedan</li>
+    <li>📍 Dealer: Lexus of Concord</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Lexus IS 500 F Sport Performance', '$58,000', 'car29')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 30 -->
+<div id="detail-car30" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775333681/20260404_211025_pl8nkw.jpg">
+  <div class="detail-title">Toyota RAV4 XLE 2018</div>
+  <div class="detail-price">$18,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 2.5L Naturally Aspirated 4-Cylinder</li>
+    <li>💪 Horsepower: 176 hp</li>
+    <li>🔩 Torque: 172 lb-ft</li>
+    <li>⚡ 0-60 mph: 8.1 seconds</li>
+    <li>🏎️ Top Speed: 112 mph</li>
+    <li>⛽ Fuel Economy: 23 city / 30 hwy mpg</li>
+    <li>🎨 Exterior: Super White Pearl</li>
+    <li>🖤 Hood: Bug Deflector Shield Installed</li>
+    <li>🚗 Roof: Silver Roof Rails + Rack Ready</li>
+    <li>💡 Lights: LED DRL + Amber Fog Lights</li>
+    <li>🛞 Wheels: 17" Silver Alloy Wheels</li>
+    <li>🪑 Interior: Beige/Black Fabric & SofTex Leather</li>
+    <li>🎛️ Dashboard: 7" Toyota Entune Touchscreen</li>
+    <li>❄️ Seats: Heated Front Seats</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌅 Roof: Power Moonroof/Sunroof</li>
+    <li>⚙️ Transmission: 6-Speed Automatic</li>
+    <li>🚗 Drive: AWD (Dynamic Torque Control)</li>
+    <li>📷 Camera: Rear Backup Camera</li>
+    <li>🔒 Safety: Toyota Safety Sense P (TSS-P)</li>
+    <li>🎵 Sound: 6-Speaker JBL Audio System</li>
+    <li>🅿️ Parking: Rear Parking Sensors</li>
+    <li>📍 Condition: Foreign Used Tokunbo</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Toyota RAV4 XLE 2018', '$18,000', 'car30')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 31 -->
+<div id="detail-car31" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775387369/20260405_094652_lixm9s.jpg">
+  <div class="detail-title">Lexus RX 350 Premium 2024</div>
+  <div class="detail-price">$52,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 2.4L Turbocharged 4-Cylinder</li>
+    <li>💪 Horsepower: 275 hp</li>
+    <li>🔩 Torque: 317 lb-ft</li>
+    <li>⚡ 0-60 mph: 6.6 seconds</li>
+    <li>🏎️ Top Speed: 124 mph</li>
+    <li>⛽ Fuel Economy: 22 city / 29 hwy mpg</li>
+    <li>🎨 Exterior: Sonic Titanium Grey Metallic</li>
+    <li>🕸️ Grille: Lexus Spindle Diamond Mesh Black</li>
+    <li>💡 Lights: BladeScan LED Adaptive Headlights</li>
+    <li>🛞 Wheels: 20" Multi-Spoke Silver Alloys</li>
+    <li>🪑 Interior: Palomino Tan NuLuxe Leather</li>
+    <li>🎛️ Dashboard: 14" Lexus Interface Touchscreen</li>
+    <li>🏎️ Steering: Heated Leather Sport Wheel</li>
+    <li>❄️ Seats: Heated & Ventilated Front Seats</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: 64-Color Ambient Interior Lighting</li>
+    <li>🌅 Roof: Panoramic Glass Moonroof</li>
+    <li>⚙️ Transmission: 8-Speed Automatic Direct Shift</li>
+    <li>🚗 Drive: AWD (LEXUS AWD-i)</li>
+    <li>📷 Camera: 360° Panoramic View Monitor</li>
+    <li>🔒 Safety: Lexus Safety System+ 3.0</li>
+    <li>🎵 Sound: Mark Levinson 21-Speaker Audio</li>
+    <li>🅿️ Parking: Advanced Smart Parking Assist</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Lexus RX 350 Premium 2024', '$52,000', 'car31')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 32 -->
+<div id="detail-car32" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775385171/20260405_100216_jv1gvf.jpg">
+  <div class="detail-title">Kia K5 GT-Line 2024</div>
+  <div class="detail-price">$32,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 1.6L Turbocharged 4-Cylinder</li>
+    <li>💪 Horsepower: 180 hp</li>
+    <li>🔩 Torque: 195 lb-ft</li>
+    <li>⚡ 0-60 mph: 7.0 seconds</li>
+    <li>🏎️ Top Speed: 130 mph</li>
+    <li>⛽ Fuel Economy: 27 city / 37 hwy mpg</li>
+    <li>🎨 Exterior: Aurora Black Pearl</li>
+    <li>🖤 Grille: GT-Line Black Mesh Radiator</li>
+    <li>💡 Lights: Sequential LED DRL Headlights</li>
+    <li>🟡 Fog Lights: LED Amber Fog Light Strips</li>
+    <li>🛞 Wheels: 18" GT-Line Gloss Black Alloys</li>
+    <li>🪑 Interior: Black Leather & Suede Sport Seats</li>
+    <li>🎛️ Dashboard: 10.25" Kia Touchscreen Display</li>
+    <li>🏎️ Steering: GT-Line Sport Flat-Bottom Wheel</li>
+    <li>❄️ Seats: Heated & Ventilated Front Seats</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: 64-Color Ambient Interior Lighting</li>
+    <li>🌅 Roof: Panoramic Sunroof</li>
+    <li>⚙️ Transmission: 8-Speed Dual Clutch Auto</li>
+    <li>🚗 Drive: FWD</li>
+    <li>📷 Camera: 360° Surround View Monitor</li>
+    <li>🔒 Safety: Kia DriveWise Suite</li>
+    <li>🎵 Sound: Bose 8-Speaker Premium Audio</li>
+    <li>🅿️ Parking: Smart Parking Assist System</li>
+    <li>📍 Dealer: Mansouri Dealership</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Kia K5 GT-Line 2024', '$32,000', 'car32')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 33 -->
+<div id="detail-car33" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1773776875/20260223_113754_hq1sem.jpg">
+  <div class="detail-title">Dodge Charger SRT Hellcat Widebody</div>
+  <div class="detail-price">$82,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 6.2L Supercharged HEMI V8</li>
+    <li>💪 Horsepower: 717 hp</li>
+    <li>🔩 Torque: 656 lb-ft</li>
+    <li>⚡ 0-60 mph: 3.6 seconds</li>
+    <li>🏎️ Top Speed: 196 mph</li>
+    <li>⛽ Fuel Economy: 13 city / 21 hwy mpg</li>
+    <li>🎨 Exterior: White Pearl Chrome Full Wrap</li>
+    <li>🔵 Lights: Ice Blue LED Halo Retrofit DRL</li>
+    <li>🏗️ Body: Widebody Aero Fender Flares</li>
+    <li>🕸️ Grille: SRT Hellcat Mesh Honeycomb</li>
+    <li>💨 Hood: Functional Ram Air Hood Scoop</li>
+    <li>🛞 Wheels: 20" Hellcat Gloss White Forged</li>
+    <li>🔴 Brakes: Brembo 6-Piston Front Calipers</li>
+    <li>🪑 Interior: Black Laguna Leather Sport Seats</li>
+    <li>🎛️ Dashboard: 10.1" Uconnect 5 Touchscreen</li>
+    <li>🏎️ Steering: SRT Flat-Bottom Suede Wheel</li>
+    <li>❄️ Seats: Heated & Ventilated Front Seats</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: SRT Interior Mood Lighting</li>
+    <li>⚙️ Transmission: 8-Speed TorqueFlite Auto</li>
+    <li>🚗 Drive: RWD (Pure Hellcat Power)</li>
+    <li>💡 Lights: Full LED Adaptive Headlights</li>
+    <li>🔒 Safety: Forward Collision Warning + AEB</li>
+    <li>🎵 Sound: Harman Kardon 18-Speaker Audio</li>
+    <li>🏆 Exhaust: Hellcat Active Valve Exhaust</li>
+    <li>🏠 Garage: Custom Hexagon LED Showroom</li>
+    <li>📦 In Stock: Yes</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Dodge Charger SRT Hellcat Widebody', '$82,000', 'car33')">Purchase Now</button>
+</div>
+  
+  <!-- DETAIL: Car 34 -->
+<div id="detail-car34" class="detail-view">
+  <button class="back-btn" onclick="goBack()">&#8592; Back</button>
+  <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1773776786/20260225_201230_kai52m.jpg">
+  <div class="detail-title">Lamborghini Urus Performante Mansory</div>
+  <div class="detail-price">$450,000</div>
+  <ul class="detail-specs">
+    <li>🔧 Engine: 4.0L Twin-Turbo V8 Biturbo</li>
+    <li>💪 Horsepower: 666 hp (Performante)</li>
+    <li>🔩 Torque: 627 lb-ft</li>
+    <li>⚡ 0-60 mph: 3.3 seconds</li>
+    <li>🏎️ Top Speed: 193 mph</li>
+    <li>🎨 Exterior: Nero Noctis Gloss Black</li>
+    <li>🏗️ Body: Mansory Full Carbon Widebody Kit</li>
+    <li>🟠 Accents: Orange Carbon Fiber Trim Lines</li>
+    <li>🟠 Lights: Orange LED Grille Accent Strips</li>
+    <li>💨 Hood: Carbon Fiber Vented Hood</li>
+    <li>🛞 Wheels: 24" Mansory Gloss Black Forged</li>
+    <li>🔴 Brakes: Carbon Ceramic CCB Calipers</li>
+    <li>🪑 Interior: Black/Orange Alcantara & Leather</li>
+    <li>🎛️ Dashboard: 12.3" Lamborghini LDVI System</li>
+    <li>🏎️ Steering: Mansory Carbon Sport Wheel</li>
+    <li>❄️ Seats: Heated & Ventilated Mansory Seats</li>
+    <li>💺 Seating: 5 Passengers</li>
+    <li>🌙 Ambient: Orange Mansory Ambient Lighting</li>
+    <li>🌅 Roof: Panoramic Carbon Fiber Roof</li>
+    <li>⚙️ Transmission: 8-Speed Automatic Torsen</li>
+    <li>🚗 Drive: AWD (Lamborghini Traction Control)</li>
+    <li>💡 Lights: Full LED Matrix Headlights</li>
+    <li>🏆 Exhaust: Mansory Titanium Quad Exhaust</li>
+    <li>🔒 Safety: Lamborghini LDVI Active Dynamics</li>
+    <li>🎵 Sound: Bang & Olufsen 3D Advanced Audio</li>
+    <li>🌍 Location: Dubai UAE — Spotted Night Shot</li>
+    <li>📦 In Stock: Extremely Limited</li>
+  </ul>
+  <button class="buy-btn" onclick="buyCar('Lamborghini Urus Performante Mansory', '$450,000', 'car34')">Purchase Now</button>
+</div>
+  
+  
+  <!-- PRODUCT GRID -->
+<div class="container">
+  <div class="card" id="car9" data-type="sport exotic sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775386365/20260405_080748_2_slogyo.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car9')">
+    <p>$72,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car9')">purchase</button>
+    <button 
+    id="cart-btn-car9"
+    class="cart-btn" 
+    onclick="addToCart('car9', 'Xiaomi SU7 Ultra 2024', 73000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775386365/20260405_080748_2_slogyo.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <div class="card" id="car10" data-type="sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558691/20260323_224630_nsxwsx.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car10')">
+    <p>$48,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car10')">purchase</button>
+    <button 
+    id="cart-btn-car10"
+    class="cart-btn" 
+    onclick="addToCart('car10', 'Mercedes-Benz C300 AMG Line', 48000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558691/20260323_224630_nsxwsx.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car11" data-type="sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558768/20260323_224447_rzdb8h.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car11')">
+    <p>$32,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car11')">purchase</button>
+    <button 
+    id="cart-btn-car11"
+    class="cart-btn" 
+    onclick="addToCart('car11', 'Toyota Camry XSE 2024', 32000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558768/20260323_224447_rzdb8h.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <div class="card" id="car12" data-type="truck">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558661/20260326_192238_rpr7ap.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car12')">
+    <p>$95,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car12')">purchase</button>
+    <button 
+    id="cart-btn-car12"
+    class="cart-btn" 
+    onclick="addToCart('car12', 'RAM 1500 TRX Launch Edition', 95000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558661/20260326_192238_rpr7ap.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car13" data-type="sport sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558646/20260326_192246_joycji.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car13')">
+    <p>$95,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car13')">purchase</button>
+    <button 
+    id="cart-btn-car13"
+    class="cart-btn" 
+    onclick="addToCart('car13', 'BMW M5 Competition F90', 95000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558646/20260326_192246_joycji.jpg', this)">
+    Add to Cart
+    </button>
+  </div>
+
+  <div class="card" id="car14" data-type="suv">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558612/20260326_192357_fg22cm.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car14')">
+    <p>$28,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car14')">purchase</button>
+    <button 
+    id="cart-btn-car14"
+    class="cart-btn" 
+    onclick="addToCart('car14', 'Changan UNI-K 2.0T Elite', 28000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558612/20260326_192357_fg22cm.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car15" data-type="sport">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558592/20260326_192512_tqfcmw.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car15')">
+    <p>$85,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car15')">purchase</button>
+    <button 
+    id="cart-btn-car15"
+    class="cart-btn" 
+    onclick="addToCart('car15', 'BMW M4 Competition', 85000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558592/20260326_192512_tqfcmw.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <div class="card" id="car16" data-type="sport">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558581/20260326_192520_dn4b13.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car16')">
+    <p>$52,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car16')">purchase</button>
+    <button 
+    id="cart-btn-car16"
+    class="cart-btn" 
+    onclick="addToCart('car16', 'Chevrolet Camaro ZL1', 52000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558581/20260326_192520_dn4b13.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car17" data-type="suv">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558554/20260326_192553_c0wndg.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car17')">
+    <p>$62,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car17')">purchase</button>
+    <button 
+    id="cart-btn-car17"
+    class="cart-btn" 
+    onclick="addToCart('car17', 'Lexus RX 350 F Sport Black Line', 62000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558554/20260326_192553_c0wndg.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <div class="card" id="car18" data-type="suv exotic luxury">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558569/20260326_192542_dxlwyy.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car18')">
+    <p>$180,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car18')">purchase</button>
+    <button 
+    id="cart-btn-car18"
+    class="cart-btn" 
+    onclick="addToCart('car18', 'Mercedes-AMG G63', 180000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558569/20260326_192542_dxlwyy.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car19" data-type="sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558533/20260326_192602_axhfd6.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car19')">
+    <p>$24,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car19')">purchase</button>
+    <button 
+    id="cart-btn-car19"
+    class="cart-btn" 
+    onclick="addToCart('car19', 'Honda Accord Sport 2.0T', 24000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558533/20260326_192602_axhfd6.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <div class="card" id="car20" data-type="sport">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558508/20260326_192655_vaicol.jpg"
+     style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car20')">
+    <p>$58,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car20')">purchase</button>
+    <button 
+    id="cart-btn-car20"
+    class="cart-btn" 
+    onclick="addToCart('car20', 'BMW M4 Coupe F82', 58000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558508/20260326_192655_vaicol.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car21" data-type="sport exotic luxury">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558491/20260326_195253_l6qgve.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car21')">
+    <p>$145,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car21')">purchase</button>
+    <button 
+    id="cart-btn-car21"
+    class="cart-btn" 
+    onclick="addToCart('car21', 'Mercedes-AMG GT 55 Coupe', 145000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558491/20260326_195253_l6qgve.jpg', this)">
+    Add to Cart
+    </button>
+  </div>
+
+  <div class="card" id="car22" data-type="suv sport">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558471/20260326_195321_qucrkw.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car22')">
+    <p>$95,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car22')">purchase</button>
+    <button 
+    id="cart-btn-car22"
+    class="cart-btn" 
+    onclick="addToCart('car22', 'Porsche Macan GTS', 95000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558471/20260326_195321_qucrkw.jpg', this)">
+    Add to Cart
+    </button>
+  </div>
+  
+  <div class="card" id="car23"data-type="suv exotic luxury">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558404/20260326_200050_ru1pl7.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car23')">
+    <p>$185,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car23')">purchase</button>
+    <button 
+    id="cart-btn-car23"
+    class="cart-btn" 
+    onclick="addToCart('car23', 'Mercedes-AMG G63 Selenite Edition', 185000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558404/20260326_200050_ru1pl7.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <div class="card" id="car24" data-type="sport Sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558418/20260326_195920_xmcc6j.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car24')">
+    <p>$92,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car24')">purchase</button>
+    <button 
+    id="cart-btn-car24"
+    class="cart-btn" 
+    onclick="addToCart('car24', 'Cadillac CT5-V Blackwing', 92000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558418/20260326_195920_xmcc6j.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car25" data-type="sport exotic luxury">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558429/20260326_195518_eh1kq1.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car25')">
+    <p>$147,500</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car25')">purchase</button>
+    <button 
+    id="cart-btn-car25"
+    class="cart-btn" 
+    onclick="addToCart('car25', 'BMW i8 Coupe', 147500, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558429/20260326_195518_eh1kq1.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <div class="card" id="car26" data-type="suv">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558443/20260326_195404_qwztfq.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car26')">
+    <p>$12,500</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car26')">purchase</button>
+    <button 
+    id="cart-btn-car26"
+    class="cart-btn" 
+    onclick="addToCart('car26', 'Mercedes-Benz GLK 350', 12500, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558443/20260326_195404_qwztfq.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car27" data-type="sedan exotic luxury">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775163935/20260326_192406_zbmnce.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car27')">
+    <p>$380,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car27')">purchase</button>
+    <button 
+    id="cart-btn-car27"
+    class="cart-btn" 
+    onclick="addToCart('car27', 'Rolls-Royce Ghost Black Badge', 380000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775164784/20260326_192406_2_zxtfhc.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <!-- BMW X6 M = SUV + Luxury -->
+  <div class="card" id="car28" data-type="suv luxury sport">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558389/20260326_200156_vdqwvg.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car28')">
+    <p>$130,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car28')">purchase</button>
+    <button 
+    id="cart-btn-car28"
+    class="cart-btn" 
+    onclick="addToCart('car28', 'BMW X6 M Competition', 130000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558389/20260326_200156_vdqwvg.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car29" data-type="sport sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775333666/20260404_200215_bdsm4z.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car29')">
+    <p>$58,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car29')">purchase</button>
+    <button 
+    id="cart-btn-car29"
+    class="cart-btn" 
+    onclick="addToCart('car29', 'Lexus IS 500 F Sport Performance', 58000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775333666/20260404_200215_bdsm4z.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <div class="card" id="car30" data-type="suv">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775333681/20260404_211025_pl8nkw.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car30')">
+    <p>$18,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car30')">purchase</button>
+    <button 
+    id="cart-btn-car30"
+    class="cart-btn" 
+    onclick="addToCart('car30', 'Toyota RAV4 XLE 2018', 18000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775333681/20260404_211025_pl8nkw.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car31" data-type="suv">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775387369/20260405_094652_lixm9s.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car31')">
+    <p>$52,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car31')">purchase</button>
+    <button 
+    id="cart-btn-car31"
+    class="cart-btn" 
+    onclick="addToCart('car31', 'Lexus RX 350 Premium 2024', 52000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775387369/20260405_094652_lixm9s.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <div class="card" id="car32" data-type="sedan">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775385171/20260405_100216_jv1gvf.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car32')">
+    <p>$32,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car32')">purchase</button>
+    <button 
+    id="cart-btn-car32"
+    class="cart-btn" 
+    onclick="addToCart('car32', 'Kia K5 GT-Line 2024', 32000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1775385171/20260405_100216_jv1gvf.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+  
+  <div class="card" id="car33" data-type="sport exotic">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776875/20260223_113754_hq1sem.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car33')">
+    <p>$82,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car33')">purchase</button>
+    <button 
+    id="cart-btn-car33"
+    class="cart-btn" 
+    onclick="addToCart('car33', 'Dodge Charger SRT Hellcat Widebody', 82000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776875/20260223_113754_hq1sem.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+
+  <div class="card" id="car34" data-type="suv exotic luxury">
+    <img src="https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776786/20260225_201230_kai52m.jpg"
+      style="width:100%; cursor:pointer; border-radius:8px;"
+        onclick="showDetail('detail-car34')">
+    <p>$450,000</p>
+    <button class="purchase-btn" onclick="showDetail('detail-car34')">purchase</button>
+    <button 
+    id="cart-btn-car34"
+    class="cart-btn" 
+    onclick="addToCart('car34', 'Lamborghini Urus Performante Mansory', 450000, 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776786/20260225_201230_kai52m.jpg', this)">
+    Add to Cart
+  </button>
+  </div>
+</div>
+  <!-- END PRODUCT GRID -->
+</div>
+      <br><br><br>
+</section>
+ 
+    
+<div id="cart" class="tabcontent"> 
+  <h2>🛒 My Cart</h2>
+  <div id="cart-items"></div>
+  <div id="cart-empty" style="text-align:center; color:gray; margin-top:40px;">
+    <p>Your cart is empty</p>
+  </div>
+  <div id="cart-total" style="display:none; padding:16px; border-top:2px solid green;">
+    <h3>Total: <span id="total-price" style="color:green;">$0</span></h3>
+    <button class="buy-btn" onclick="buyAll()">Buy All</button>
+    <br><br><br>
+  </div>
+</div>
+</div>
+  
+<div id="more" class="tabcontent">More Content</div>
+
+
+<div id="help" class="tabcontent">
+  <!-- Back Button -->
+  <div style="padding:12px 16px; border-bottom:1px solid #eee;">
+    <button onclick="openTab('home')" class="back-btn">&#8592; Back to Home</button>
+  </div>
+
+  <h2 style="color:green; padding:16px 0 0 16px;">Help Center</h2>
+
+  <!-- FAQ Section -->
+  <div style="padding:16px;">
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        ❓ How do I purchase a car? ▾
+      </div>
+      <div class="faq-answer">
+        Browse our catalog, click on any car image to view full details, 
+        then click "Purchase Now" or "Add to Cart" to proceed with your order.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        ❓ How do I contact you? ▾
+      </div>
+      <div class="faq-answer">
+        You can reach us via email at Motor_AccessoriesLtd@gmail.com 
+        or click the WhatsApp button on any car detail page.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        ❓ Do you offer installment payment? ▾
+      </div>
+      <div class="faq-answer">
+        Yes! We offer flexible payment plans for qualified buyers. 
+        Contact us directly to discuss payment options.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        ❓ Are the cars tokunbo or brand new? ▾
+      </div>
+      <div class="faq-answer">
+        We sell both foreign used (tokunbo) and brand new vehicles. 
+        Each car listing clearly states its condition.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        ❓ Do you handle delivery? ▾
+      </div>
+      <div class="faq-answer">
+        Yes! We offer delivery within Nigeria. 
+        Contact us for delivery fees to your location.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        ❓ How do I use the Cart? ▾
+      </div>
+      <div class="faq-answer">
+        Click "Add to Cart" on any car. Then go to the Cart tab 
+        to view all selected cars and proceed to purchase via WhatsApp.
+      </div>
+    </div>
+
+    <!-- Contact Button -->
+    <div style="margin-top:24px; text-align:center;">
+      <p style="color:gray; font-size:0.9rem;">Still need help?</p>
+      <a href="mailto:Motor_AccessoriesLtd@gmail.com">
+        <button style="background:green; color:white; padding:12px 24px; 
+          border:none; border-radius:8px; font-size:1rem; width:100%; cursor:pointer;">
+          📧 Email Us
+        </button>
+      </a>
+      <a href="https://wa.me/2349116518134">
+        <button style="background:#25D366; color:white; padding:12px 24px;
+          border:none; border-radius:8px; font-size:1rem; width:100%; 
+          cursor:pointer; margin-top:10px;">
+          💬 WhatsApp Us
+        </button>
+      </a>
+    </div>
+
+  </div>
+</div>
+<br><br>
+
+<!-- BOTTOM NAVIGATION -->
+<div class="bottom-nav">
+
+<button onclick="openTab('home')">
+<i class="fa fa-home"></i><br>Home
+</button>
+
+<button onclick="openTab('Products')">
+<i class="fa fa-tag"></i><br>Products
+</button>
+
+<button onclick="openTab('cart')">
+<i class="fa fa-shopping-cart"></i><br>cart
+</button>
+
+<button onclick="openMenu()">
+<i class="fa fa-bars"></i><br>More
+</button>
+
+</div>
+
+<script src="script.js"></script>
+      
+    
+   
+       <script>
+function openTab(tabName, element){
+
+let tabs = document.querySelectorAll(".tabcontent");
+tabs.forEach(tab => {
+tab.style.display = "none";
+});
+  
+document.getElementById(tabName).style.display = "block";
+  
+  // CLOSE MENU AUTOMATICALLY every time a tab opens ✅
+  document.getElementById('sideMenu').style.left = '-250px';
+  
+  // Scroll to top
+  window.scrollTo(0, 0);
+
+
+
+/* remove active from all buttons */
+
+let buttons = document.querySelectorAll(".bottom-nav button");
+buttons.forEach(btn =>{
+btn.classList.remove("active");
+});
+
+
+/* add active to clicked button */
+
+element.classList.add("active");
+
+}
+  
+ document.addEventListener("DOMContentLoaded", function() {
+  const homeBtn = document.querySelector(".bottom-nav button:first-child");
+  openTab("home", homeBtn);
+});
+  
+ 
+function openMenu(){
+  document.getElementById("sideMenu").style.left = "0";
+}
+
+function closeMenu(){
+  document.getElementById("sideMenu").style.left = "-250px";
+}
+  
+  function showDetail(id) {
+  // Hide the grid
+  document.getElementById('product-grid').style.display = 'none';
+
+  // Hide all detail views first
+  document.querySelectorAll('.detail-view').forEach(d => d.style.display = 'none');
+
+  // Show the clicked one
+  document.getElementById(id).style.display = 'block';
+
+  // Scroll to top
+  window.scrollTo(0, 0);
+}
+  
+function goBack() {
+  document.querySelectorAll('.detail-view').forEach(d => d.style.display = 'none');
+
+  const filterResults = document.getElementById('filter-results');
+
+  if (filterResults) {
+    document.getElementById('product-grid').style.display = 'none';
+    filterResults.style.display = 'flex';
+  } else {
+    document.getElementById('product-grid').style.display = 'block';
+  }
+
+  document.querySelectorAll('.tabcontent').forEach(tab => {
+    tab.style.display = 'none';
+  });
+  document.getElementById('home').style.display = 'block';
+
+  window.scrollTo(0, 0);
+}
+  
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  
+
+function addToCart(id, name, price, img, btn) {
+  // Check if already in cart
+  const exists = cart.find(item => item.id === id);
+  if (exists) return;
+
+  // Add to cart array
+  cart.push({ id, name, price, img });
+  localStorage.setItem('cart', JSON.stringify(cart));
+  
+  // Change button text & style
+  btn.innerText = '✅ Added to Cart';
+  btn.classList.add('added');
+  btn.disabled = true;
+
+  // Update cart badge on nav
+  updateCartBadge();
+
+  // Render cart items
+  renderCart();
+}
+
+function removeFromCart(id, cardBtnId) {
+  cart = cart.filter(item => item.id !== id);
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  // Reset the button
+  const btn = document.getElementById('cart-btn-' + cardBtnId);
+  if (btn) {
+    btn.innerText = 'Add to Cart';
+    btn.classList.remove('added');
+    btn.disabled = false;
+  }
+
+  updateCartBadge();
+  renderCart();
+}
+
+function renderCart() {
+  const container = document.getElementById('cart-items');
+  const empty = document.getElementById('cart-empty');
+  const totalSection = document.getElementById('cart-total');
+  const totalPrice = document.getElementById('total-price');
+
+  if (cart.length === 0) {
+    container.innerHTML = '';
+    empty.style.display = 'block';
+    totalSection.style.display = 'none';
+    return;
+  }
+
+  empty.style.display = 'none';
+  totalSection.style.display = 'block';
+
+  container.innerHTML = cart.map(item => `
+  <div class="cart-item">
+    <img src="${item.img}" alt="${item.name}"
+      onclick="openCarDetail('${item.id}')"
+      style="cursor:pointer;">
+    <div class="cart-item-info">
+      <h4 onclick="openCarDetail('${item.id}')"
+        style="cursor:pointer;">${item.name}</h4>
+      <p>$${item.price.toLocaleString()}</p>
+    </div>
+    <button class="remove-btn"
+      onclick="removeFromCart('${item.id}', '${item.id}')">🗑️
+    </button>
+  </div>
+`).join('');
+  
+  // Calculate total
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  totalPrice.innerText = '$' + total.toLocaleString();
+}
+
+function updateCartBadge() {
+  // Remove existing badge
+  const existing = document.getElementById('cart-badge');
+  if (existing) existing.remove();
+  document.getElementById('headerBadge').textContent = cart.length;
+
+  if (cart.length > 0) {
+    const cartNav = document.querySelector('.bottom-nav button:nth-child(3)');
+    const badge = document.createElement('span');
+    badge.id = 'cart-badge';
+    badge.className = 'cart-badge';
+    badge.innerText = cart.length;
+    cartNav.appendChild(badge);
+    document.getElementById('headerBadge').textContent = cart.length;
+  }
+}
+  
+  function restoreCartButtons() {
+  cart.forEach(item => {
+    const btn = document.getElementById('cart-btn-' + item.id);
+    if (btn) {
+      btn.innerText = '✅ Added to Cart';
+      btn.classList.add('added');
+      btn.disabled = true;
+    }
+  });
+}
+
+  document.addEventListener('DOMContentLoaded', function() {
+  // Load cart on startup
+  renderCart();
+  updateCartBadge();
+  restoreCartButtons();
+  
+  // Your existing code:
+  const homeBtn = document.querySelector('.bottom-nav button:first-child');
+  openTab('home', homeBtn);
+});
+  
+  
+ function buyCar(name, price, id) {
+  let message = `Hello, I want to buy the ${name} for ${price} ${id}`;
+  let url = "https://wa.me/2349116518134?text=" + encodeURIComponent(message);
+  
+  window.open(url, "_blank");
+} 
+  
+  function openCarDetail(carId) {
+  // Hide grid
+  document.getElementById('product-grid').style.display = 'none';
+  
+  // Hide all detail views
+  document.querySelectorAll('.detail-view').forEach(d => d.style.display = 'none');
+  
+  // Show the matching detail view
+  const detail = document.getElementById('detail-' + carId);
+  if (detail) detail.style.display = 'block';
+  
+  // Switch to Products tab
+  const productsBtn = document.querySelector('.bottom-nav button:nth-child(2)');
+  openTab('Products', productsBtn);
+  
+  window.scrollTo(0, 0);
+}
+  
+  function buyAll() {
+  if (cart.length === 0) return;
+
+  // Build car list message
+    const carList = cart.map((item, index) => 
+    `${index + 1}. ${item.name} | $${item.price.toLocaleString()} | ID: ${item.id}`
+  ).join('\n');
+
+  // Calculate total
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+
+  // Build full message
+  const message = `Hello, I want to buy the following cars:\n\n${carList}\n\nTotal: $${total.toLocaleString()}`;
+
+  const url = "https://wa.me/2349116518134?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
+}
+ 
+
+// All your cars data
+const carData = [
+  { id: 'detail-car1',  name: 'Lamborghini Urus',               price: '$118,000', img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776816/20260228_200513_zmzjpb.jpg' },
+  { id: 'detail-car2',  name: 'Mercedes S Class',               price: '$118,000', img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776676/20260228_204426_d20luv.jpg' },
+  { id: 'detail-car3',  name: 'Ferrari F8 Tributo',             price: '$290,000', img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1774905870/20260330_173528_mbuusb.jpg' },
+  { id: 'detail-car4',  name: 'BMW M4 Competition',             price: '$88,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1775336150/file_000000002054720a803f1af2fce06e9e_utprcv.jpg' },
+  { id: 'detail-car5',  name: 'BMW 740i M Sport',               price: '$98,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1774905046/20260330_180222_i04lb4.jpg' },
+  { id: 'detail-car6',  name: 'Mercedes Maybach SL 680',        price: '$250,000', img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1774905038/20260330_175649_fgymqm.jpg' },
+  { id: 'detail-car7',  name: 'Mercedes Benz E300 Exclusive ',  price: '$68,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_280,c_fill/v1775337223/Screenshot_20260404-221050_vdz8on.jpg' },
+  { id: 'detail-car8',  name: 'Chevrolet Camaro SS 2SS',        price: '$48,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_330,h_270,c_fill/v1775384240/20260405_080629_2_wxg97f.jpg' },
+  { id: 'detail-car9',  name: 'Xiaomi SU7 Ultra',               price: '$73,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775386365/20260405_080748_2_slogyo.jpg' },
+  { id: 'detail-car10', name: 'Mercedes-Benz C300 AMG ',        price: '$48,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558691/20260323_224630_nsxwsx.jpg' },
+  { id: 'detail-car11', name: 'Toyota Camry XSE 2024',          price: '$32,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558768/20260323_224447_rzdb8h.jpg' },
+  { id: 'detail-car12', name: 'RAM 1500 TRX Launch Edition',    price: '$95,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558661/20260326_192238_rpr7ap.jpg' },
+  { id: 'detail-car13', name: 'BMW M5 Competition F90',         price: '$95,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558646/20260326_192246_joycji.jpg' },
+  { id: 'detail-car14', name: 'Changan UNI-K',                  price: '$28,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1774558612/20260326_192357_fg22cm.jpg' },
+  { id: 'detail-car15', name: 'BMW M4 Competition',             price: '$85,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558592/20260326_192512_tqfcmw.jpg' },
+  { id: 'detail-car16', name: 'Chevrolet Camaro ZL1',           price: '$52,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558581/20260326_192520_dn4b13.jpg' },
+  { id: 'detail-car17', name: 'Lexus RX 350 F Sport ',          price: '$62,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558554/20260326_192553_c0wndg.jpg' },
+  { id: 'detail-car18', name: 'Mercedes AMG G63',               price: '$180,000', img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558569/20260326_192542_dxlwyy.jpg' },
+  { id: 'detail-car19', name: 'Honda Accord Sport 2.0T',        price: '$24,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558533/20260326_192602_axhfd6.jpg' },
+  { id: 'detail-car20', name: 'BMW M4 Coupe F82',               price: '$58,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558508/20260326_192655_vaicol.jpg' },
+  { id: 'detail-car21', name: 'Mercedes AMG GT 55 Coupe',       price: '$145,000', img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558491/20260326_195253_l6qgve.jpg' },
+  { id: 'detail-car22', name: 'Porsche Macan GTS',              price: '$95,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558471/20260326_195321_qucrkw.jpg' },
+  { id: 'detail-car23', name: 'Mercedes AMG G63',               price: '$185,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558404/20260326_200050_ru1pl7.jpg' },
+  { id: 'detail-car24', name: 'Cadillac CT5-V',                 price: '$92,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558418/20260326_195920_xmcc6j.jpg' },
+  { id: 'detail-car25', name: 'BMW i8 Coupe',                   price: '$147,500', img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558429/20260326_195518_eh1kq1.jpg' },
+  { id: 'detail-car26', name: 'Mercedes-Benz GLK 350',          price: '$12,500',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558443/20260326_195404_qwztfq.jpg' },
+  { id: 'detail-car27', name: 'Rolls-Royce Ghost',              price: '$380,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775164784/20260326_192406_2_zxtfhc.jpg' },
+  { id: 'detail-car28', name: 'BMW X6 M Competition',           price: '$130,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1774558389/20260326_200156_vdqwvg.jpg' },
+  { id: 'detail-car29', name: 'Lexus IS 500 F Sport',           price: '$58,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775333666/20260404_200215_bdsm4z.jpg' },
+  { id: 'detail-car30', name: 'Toyota RAV4 XLE 2018',           price: '$18,000', img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775333681/20260404_211025_pl8nkw.jpg' },
+  { id: 'detail-car31', name: 'Lexus RX 350 Premium',           price: '$52,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775387369/20260405_094652_lixm9s.jpg' },
+  { id: 'detail-car32', name: 'Kia K5 GT-Line',                 price: '$32,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1775385171/20260405_100216_jv1gvf.jpg' },
+  { id: 'detail-car33', name: 'Dodge Charger SRT Hellcat ',     price: '$82,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_200,h_200,c_fill/v1773776875/20260223_113754_hq1sem.jpg' },
+  { id: 'detail-car34', name: 'Lamborghini Urus Performante',   price: '$450,000',  img: 'https://res.cloudinary.com/dpwiflktr/image/upload/w_150,h_150,c_fill/v1773776786/20260225_201230_kai52m.jpg' },
+];
+
+function searchCars() {
+  const query = document.getElementById('searchInput').value.toLowerCase().trim();
+  const resultsBox = document.getElementById('search-results');
+
+  // Hide if empty
+  if (query === '') {
+    resultsBox.style.display = 'none';
+    resultsBox.innerHTML = '';
+    return;
+  }
+
+  // Filter matching cars
+  const matches = carData.filter(car =>
+    car.name.toLowerCase().includes(query)
+  );
+
+  resultsBox.style.display = 'block';
+
+  if (matches.length === 0) {
+    resultsBox.innerHTML = '<div class="no-results">🚗 No car found for "' + query + '"</div>';
+    return;
+  }
+
+  resultsBox.innerHTML = matches.map(car => `
+    <div class="search-result-item" onclick="openFromSearch('${car.id}')">
+      <img src="${car.img}" alt="${car.name}">
+      <div class="search-result-info">
+        <h4>${car.name}</h4>
+        <p>${car.price}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openFromSearch(id) {
+  // Clear search
+  document.getElementById('searchInput').value = '';
+  document.getElementById('search-results').style.display = 'none';
+  document.getElementById('search-results').innerHTML = '';
+
+  // Find which tab contains this detail div
+  const detailDiv = document.getElementById(id);
+  const parentTab = detailDiv.closest('.tabcontent');
+
+  // Switch to that tab first
+  if (parentTab) {
+    // Hide all tabs
+    document.querySelectorAll('.tabcontent').forEach(tab => {
+      tab.style.display = 'none';
+    });
+
+    // Show the correct tab
+    parentTab.style.display = 'block';
+
+    // Update active nav button
+    const tabId = parentTab.id;
+    document.querySelectorAll('.bottom-nav button').forEach(btn => {
+      btn.classList.remove('active');
+    });
+
+    // Match tab id to nav button
+    const navMap = {
+      'home': 0,
+      'Products': 1,
+      'cart': 2,
+      'more': 3
+    };
+    const btnIndex = navMap[tabId];
+    if (btnIndex !== undefined) {
+      document.querySelectorAll('.bottom-nav button')[btnIndex].classList.add('active');
+    }
+  }
+
+  // Now show the detail view
+  showDetail(id);
+}
+
+function toggleDropdown() {
+  const list = document.getElementById('dropdownList');
+  list.classList.toggle('open');
+}
+
+function toggleFaq(question) {
+  const answer = question.nextElementSibling;
+  answer.classList.toggle('open');
+
+  // Change arrow direction
+  if (answer.classList.contains('open')) {
+    question.innerHTML = question.innerHTML.replace('▾', '▴');
+  } else {
+    question.innerHTML = question.innerHTML.replace('▴', '▾');
+  }
+}
+
+
+function filterCars(type) {
+
+  // Remove old filter results
+  const oldResults = document.getElementById('filter-results');
+  if (oldResults) oldResults.remove();
+
+  // Close dropdown and menu
+  const dropdownList = document.getElementById('dropdownList');
+  if (dropdownList) dropdownList.classList.remove('open');
+  document.getElementById('sideMenu').style.left = '-250px';
+
+  // Switch to home tab
+  document.querySelectorAll('.tabcontent').forEach(tab => {
+    tab.style.display = 'none';
+  });
+  document.getElementById('home').style.display = 'block';
+
+  // Get cards from ORIGINAL tabs only
+  const allCards = document.querySelectorAll(
+    '#home .card[data-type], #Products .card[data-type]'
+  );
+
+  if (type === 'all') {
+    document.getElementById('product-grid').style.display = 'block';
+    document.getElementById('filter-label').innerText = 'Top sales for you';
+    window.scrollTo(0, 0);
+    return;
+  }
+
+  // Hide original grid
+  document.getElementById('product-grid').style.display = 'none';
+
+  // Create results container
+  const resultsDiv = document.createElement('div');
+  resultsDiv.id = 'filter-results';
+  resultsDiv.className = 'container';
+
+  let count = 0;
+
+  allCards.forEach(card => {
+    const cardType = card.getAttribute('data-type') || '';
+    if (cardType.includes(type)) {
+      const img = card.querySelector('img');
+      const onclickVal = img ? img.getAttribute('onclick') : '';
+      const detailIdMatch = onclickVal ? onclickVal.match(/showDetail\('([^']+)'\)/) : null;
+      const detailId = detailIdMatch ? detailIdMatch[1] : null;
+      const parentTab = card.closest('.tabcontent');
+      const tabId = parentTab ? parentTab.id : 'home';
+      const imgSrc = img ? img.getAttribute('src') : '';
+      const imgAlt = img ? img.getAttribute('alt') : '';
+
+      const newCard = document.createElement('div');
+      newCard.className = 'card';
+      newCard.innerHTML = `
+        <img src="${imgSrc}" alt="${imgAlt}"
+          style="width:100%; cursor:pointer; border-radius:8px;"
+          onclick="openFromFilter('${tabId}', '${detailId}')">
+      `;
+
+      resultsDiv.appendChild(newCard);
+      count++;
+    }
+  });
+
+  document.getElementById('home').appendChild(resultsDiv);
+
+  const labels = {
+    'luxury': '👑 Luxury Cars',
+    'sport': '🏎️ Sports Cars',
+    'suv': '🚙 SUVs',
+    'sedan': '🚘 Sedans',
+    'truck': '🛻 Trucks',
+    'exotic': '💎 Exotic Cars'
+  };
+
+  document.getElementById('filter-label').innerText =
+    (labels[type] || type) + ' (' + count + ')';
+
+  window.scrollTo(0, 0);
+}
+
+  // NEW function - navigates to correct tab then opens detail
+function openFromFilter(tabId, detailId) {
+  // Hide all tabs
+  document.querySelectorAll('.tabcontent').forEach(tab => {
+    tab.style.display = 'none';
+  });
+
+  // Show the correct tab
+  document.getElementById(tabId).style.display = 'block';
+
+  // Open the detail view
+  showDetail(detailId);
+
+  window.scrollTo(0, 0);
+}    
+</script>
+</body>
+</html>
